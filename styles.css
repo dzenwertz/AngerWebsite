@@ -75,7 +75,8 @@ body {
 }
 
 .announcement-track span strong {
-    color: var(--accent-red);
+    color: #ff3b53;
+    text-shadow: 0 0 10px rgba(255, 59, 83, 0.6);
 }
 
 @keyframes marquee {
@@ -334,7 +335,7 @@ body {
     color: var(--accent-red);
 }
 
-/* Vans Hero Slider with Enhanced Dark Vignette Contrast Shading */
+/* Vans Hero Slider with Glassmorphic Frosted Red Blur Effects */
 .hero-slider {
     position: relative;
     height: 82vh;
@@ -396,19 +397,23 @@ body {
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+/* Frosted Glassmorphic Tag with Soft Red Blur Glow */
 .slide-tag {
     display: inline-block;
-    background: var(--accent-red);
+    background: rgba(211, 17, 39, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 80, 100, 0.45);
     color: #ffffff;
     font-family: var(--font-heading);
     font-size: 0.75rem;
     font-weight: 900;
-    padding: 6px 14px;
+    padding: 6px 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 30px;
     margin-bottom: 16px;
-    box-shadow: 0 4px 14px rgba(211, 17, 39, 0.4);
+    box-shadow: 0 0 20px rgba(211, 17, 39, 0.35), inset 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .slide-title {
@@ -422,7 +427,13 @@ body {
     color: #ffffff;
 }
 
-.slide-title span { color: var(--accent-red); }
+/* Glowing Blurred Red Gradient Typography */
+.slide-title span {
+    background: linear-gradient(135deg, #ff4d66 0%, #d31127 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px rgba(255, 45, 75, 0.65));
+}
 
 .slide-sub {
     font-size: clamp(0.95rem, 2.5vw, 1.15rem);
@@ -503,6 +514,7 @@ body {
     background: var(--accent-red);
     width: 28px;
     border-radius: 10px;
+    box-shadow: 0 0 12px rgba(211, 17, 39, 0.8);
 }
 
 /* Features Bar */
