@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANGER® | Official Streetwear & Premium Apparel</title>
+    <meta name="description" content="Marca oficial de indumentaria urbana independiente por Luis Angel Cachay. Prendas oversized de alta gama, polos boxy fit 280 GSM y siluetas holgadas en algodón pesado.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Professional Marquee Ticker -->
+    <div class="announcement-bar">
+        <div class="announcement-track">
+            <span>ANGER® OFFICIAL STORE ✦ <strong>SEASON 01 // HEAVYWEIGHT DROPS</strong> BY LUIS ANGEL CACHAY</span>
+            <span>⚡ ENVÍOS NACIONALES VÍA SHALOM & OLVA COURIER</span>
+            <span>✦ ALGODÓN REACTIVO DE ALTO GRAMAJE (280–450 GSM) ✦ LIMA, PERÚ</span>
+            <span>ANGER® OFFICIAL STORE ✦ <strong>SEASON 01 // HEAVYWEIGHT DROPS</strong> BY LUIS ANGEL CACHAY</span>
+        </div>
+    </div>
+
+    <!-- Vans Style Clean White Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-main">ANGER<span class="red-dot">.</span></span>
+                <span class="logo-sub">STREETWEAR</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link active">INICIO</a>
+                <a href="#categories" class="nav-link">COLECCIONES</a>
+                <a href="#catalog" class="nav-link">DROPS DE TEMPORADA</a>
+                <a href="#manifesto" class="nav-link">MANIFESTO</a>
+                <a href="#size-guide" class="nav-link">GUÍA DE TALLAS</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" id="searchTrigger" title="Buscar Productos">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="icon-btn" id="wishlistTrigger" title="Mis Favoritos">
+                    <i class="fa-solid fa-heart" style="color: var(--accent-red);"></i>
+                    <span class="cart-badge" id="wishlistBadge">0</span>
+                </button>
+                <button class="icon-btn" id="cartTrigger" title="Carrito de Compras">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menú">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Live Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-box">
+            <div class="search-input-group">
+                <i class="fa-solid fa-magnifying-glass search-field-icon"></i>
+                <input type="text" id="searchInput" placeholder="ESCRIBE PARA BUSCAR PRENDAS (EJ: SHORTS, BOXY, DENIM)..." autocomplete="off">
+                <button id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="search-results-list" id="searchResultsList">
+                <!-- Search results injected live via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Media Slider (With Dark Vignette Contrast Shading) -->
+    <section class="hero-slider" id="hero">
+        <!-- Slide 1 -->
+        <div class="slide active" data-slide="0">
+            <div class="slide-bg" style="background-image: url('assets/hero-slide-1.jpg');"></div>
+            <div class="slide-fade-overlay"></div>
+            <div class="container">
+                <div class="slide-content">
+                    <span class="slide-tag">SEASON 01 // INDEPENDENT STREETWEAR</span>
+                    <h1 class="slide-title">AUTHENTIC<br><span>STREETWEAR.</span></h1>
+                    <p class="slide-sub">Indumentaria urbana de alta gama desarrollada por <strong>Luis Angel Cachay</strong>. Patronaje holgado exclusivo y confección en textil pesado de alta resistencia.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalog" class="btn btn-white"><span>EXPLORAR TIENDA</span> <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" data-slide="1">
+            <div class="slide-bg" style="background-image: url('assets/hero-slide-2.jpg');"></div>
+            <div class="slide-fade-overlay"></div>
+            <div class="container">
+                <div class="slide-content">
+                    <span class="slide-tag">RAW HEAVYWEIGHT COLLECTION</span>
+                    <h1 class="slide-title">ESSENTIAL<br><span>OVERSIZED DROPS.</span></h1>
+                    <p class="slide-sub">Siluetas de corte ancho con estructura rígida que mantiene la forma. Confección propia en algodón de máximo gramaje.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalog" class="btn btn-white"><span>VER CATÁLOGO</span> <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" data-slide="2">
+            <div class="slide-bg" style="background-image: url('assets/hero-slide-3.jpg');"></div>
+            <div class="slide-fade-overlay"></div>
+            <div class="container">
+                <div class="slide-content">
+                    <span class="slide-tag">UTILITY URBAN EDITION</span>
+                    <h1 class="slide-title">LIMITED EDITION<br><span>SILHOUETTES.</span></h1>
+                    <p class="slide-sub">Ediciones limitadas de producción artesanal en Perú. Atención en cada detalle de costura y acabados urbanos.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalog" class="btn btn-white"><span>VER MODELOS</span> <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Dots Nav -->
+        <div class="slider-dots" id="sliderDots">
+            <button class="dot-btn active" onclick="goToSlide(0)"></button>
+            <button class="dot-btn" onclick="goToSlide(1)"></button>
+            <button class="dot-btn" onclick="goToSlide(2)"></button>
+        </div>
+    </section>
+
+    <!-- Feature Strip -->
+    <section class="features-bar">
+        <div class="container features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
+                <div class="feature-info">
+                    <h4>PATRONAJE EXCLUSIVO</h4>
+                    <p>Diseño e ingeniería de moldes propia por Luis Angel Cachay.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="feature-info">
+                    <h4>DESPACHOS NACIONALES</h4>
+                    <p>Envíos a todo el Perú con seguimiento vía Shalom & Olva.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-shirt"></i></div>
+                <div class="feature-info">
+                    <h4>TEXTIL HEAVYWEIGHT</h4>
+                    <p>Algodón reactivo de 280 a 450 GSM de alto gramaje.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="section" id="categories">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">EXPLORA POR CATEGORÍA</span>
+                <h2 class="section-title">COLECCIONES DESTACADAS</h2>
+            </div>
+
+            <div class="category-grid">
+                <div class="cat-tile" onclick="filterByCategory('Shorts Baggies')">
+                    <img src="assets/real-shorts-01.jpg" alt="Light Blue Washed Baggie Denim">
+                    <div class="cat-tile-overlay">
+                        <h3>OVERSIZED BAGGIE SHORTS</h3>
+                        <p>Jean baggie en lavado azul celeste claro (14 oz)</p>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="filterByCategory('Polos Boxy Fit')">
+                    <img src="assets/boxy-black.jpg" alt="Boxy Fit Tees">
+                    <div class="cat-tile-overlay">
+                        <h3>BOXY FIT TEES</h3>
+                        <p>Algodón jersey 280 GSM con hombro caído</p>
+                    </div>
+                </div>
+
+                <div class="cat-tile" onclick="filterByCategory('Baggie Pants')">
+                    <img src="assets/baggy-jean.jpg" alt="Double Knee Baggies">
+                    <div class="cat-tile-overlay">
+                        <h3>DOUBLE KNEE BAGGIES</h3>
+                        <p>Denim de pierna ancha con refuerzo en rodillas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="section" id="catalog" style="background: #ffffff;">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-subtitle">COLECCIÓN DISPONIBLE</span>
+                <h2 class="section-title">CATÁLOGO OFICIAL ANGER®</h2>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-wrapper">
+                <div class="filter-chips">
+                    <button class="chip active" data-cat="all">TODOS</button>
+                    <button class="chip" data-cat="Shorts Baggies">OVERSIZED SHORTS</button>
+                    <button class="chip" data-cat="Polos Boxy Fit">BOXY TEES</button>
+                    <button class="chip" data-cat="Baggie Pants">BAGGIE PANTS</button>
+                    <button class="chip" data-cat="Hoodies">HOODIES</button>
+                </div>
+
+                <div class="filter-selects">
+                    <select id="sizeFilter">
+                        <option value="all">TALLA: TODAS</option>
+                        <option value="S">TALLA S</option>
+                        <option value="M">TALLA M</option>
+                        <option value="L">TALLA L</option>
+                        <option value="XL">TALLA XL</option>
+                    </select>
+
+                    <select id="sortFilter">
+                        <option value="default">ORDEN: DESTACADOS</option>
+                        <option value="low-high">PRECIO: MENOR A MAYOR</option>
+                        <option value="high-low">PRECIO: MAYOR A MENOR</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto / About -->
+    <section class="section manifesto-section" id="manifesto">
+        <div class="container manifesto-grid">
+            <div class="manifesto-text">
+                <span class="section-subtitle">FILOSOFÍA DE LA MARCA</span>
+                <h2 class="section-title">DISEÑO DE AUTOR & CONFECCIÓN PERUANA</h2>
+                <p>
+                    <strong>ANGER®</strong> es un proyecto independiente enfocado en rescatar el volumen auténtico del streetwear contemporáneo. Dirigido por <strong>Luis Angel Cachay</strong>, desarrollamos prendas de silueta amplia con insumos de alta durabilidad.
+                </p>
+                <p>
+                    Utilizamos textiles de tejido denso (280 a 450 GSM) tratados con tintes reactivos que garantizan solidez de color e indeformabilidad tras cada lavado.
+                </p>
+            </div>
+
+            <div class="contact-box">
+                <h4><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> CONSULTAS Y ATENCIÓN PERSONALIZADA</h4>
+                <p>Comunícate directamente con Luis Angel Cachay para dudas sobre tallas, existencias o envíos a provincia.</p>
+                <a href="https://wa.me/51910255019?text=Hola%20Luis%20Angel!%20Deseo%20consultar%20por%20las%20prendas%20de%20ANGER" target="_blank" class="btn btn-white" style="background: #111; color: #fff; width: 100%;">
+                    <i class="fa-brands fa-whatsapp"></i> CHATEAR AL 910 255 019
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Size Guide Section -->
+    <section class="section" id="size-guide">
+        <div class="container">
+            <div class="section-head center">
+                <span class="section-subtitle">ESPECIFICACIONES TÉCNICAS</span>
+                <h2 class="section-title">GUÍA DE CALCE & MEDIDAS</h2>
+            </div>
+
+            <div class="table-wrap">
+                <table class="size-table">
+                    <thead>
+                        <tr>
+                            <th>TALLA</th>
+                            <th>CINTURA (SHORTS/PANTS)</th>
+                            <th>LARGO DE PIERNA</th>
+                            <th>ANCHO PECHO (BOXY TEE)</th>
+                            <th>RECOMENDACIÓN DE FIT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="t-pill">S</span></td>
+                            <td>72 – 78 cm</td>
+                            <td>56 cm</td>
+                            <td>58 cm</td>
+                            <td>Fit Relajado (Talla 28-30)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="t-pill">M</span></td>
+                            <td>78 – 84 cm</td>
+                            <td>58 cm</td>
+                            <td>61 cm</td>
+                            <td>Fit Holgado (Talla 30-32)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="t-pill">L</span></td>
+                            <td>84 – 90 cm</td>
+                            <td>60 cm</td>
+                            <td>64 cm</td>
+                            <td>Fit Oversized (Talla 32-34)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="t-pill">XL</span></td>
+                            <td>90 – 98 cm</td>
+                            <td>62 cm</td>
+                            <td>67 cm</td>
+                            <td>Fit Baggie Extra Ancho (Talla 34-36)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="brand-logo footer-logo">
+                    <span class="logo-main">ANGER<span class="red-dot">.</span></span>
+                </a>
+                <p>Indumentaria urbana independiente de alta gama por Luis Angel Cachay. Confección peruana.</p>
+                <div class="soc-row">
+                    <a href="https://wa.me/51910255019" target="_blank" class="soc-icon"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="soc-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="soc-icon"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4>MÉTODOS DE PAGO Y DESPACHO</h4>
+                <p>✓ Aceptamos Yape & Plin<br>✓ Transferencia BCP e Interbank<br>✓ Envíos garantizados vía Shalom y Olva Courier</p>
+            </div>
+
+            <div>
+                <h4>CONTACTO DIRECTO</h4>
+                <p>📱 WhatsApp: +51 910 255 019<br>👤 Luis Angel Cachay<br>📍 Lima, Perú</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-flex">
+                <p>&copy; 2026 ANGER® STREETWEAR. Todos los derechos reservados.</p>
+                <p style="font-family: var(--font-heading); font-weight: 800; color: #ffffff;">PERUVIAN INDEPENDENT STREETWEAR ⚡</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wishlist Drawer Modal -->
+    <div class="cart-drawer" id="wishlistDrawer">
+        <div class="drawer-overlay" id="wishlistOverlay"></div>
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <h3><i class="fa-solid fa-heart" style="color: var(--accent-red);"></i> MIS FAVORITOS</h3>
+                <button class="drawer-close" id="closeWishlistBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="drawer-body" id="wishlistBody">
+                <!-- Wishlist Items dynamic -->
+            </div>
+
+            <div class="drawer-footer">
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">Tus productos guardados para comprar después.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer Modal -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <h3><i class="fa-solid fa-bag-shopping"></i> CARRITO DE COMPRAS</h3>
+                <button class="drawer-close" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="drawer-body" id="cartBody">
+                <!-- Cart Items dynamic -->
+            </div>
+
+            <div class="drawer-footer">
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; margin-bottom: 16px;">
+                    <span>TOTAL ESTIMADO:</span>
+                    <span id="cartTotalVal">S/ 0.00</span>
+                </div>
+                <button class="btn btn-whatsapp" style="width: 100%;" id="checkoutWhatsappBtn">
+                    <i class="fa-brands fa-whatsapp"></i> PEDIR AL WHATSAPP (910 255 019)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Modal -->
+    <div class="modal" id="quickModal">
+        <div class="modal-bg" id="modalBg"></div>
+        <div class="modal-card">
+            <button class="modal-close" id="closeModalCross"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-grid" id="modalContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "drop-01",
+    "title": "ANGER Light Blue Washed Baggie Denim",
+    "category": "Shorts Baggies",
+    "price": 119.00,
+    "badge": "EXCLUSIVE DROP",
+    "image": "assets/real-shorts-01.jpg",
+    "secondaryImage": "assets/real-shorts-01.jpg",
+    "description": "Short baggie denim en lavado azul celeste claro de silueta holgada. Confeccionado en jean rígido de alto gramaje con el bordado exclusivo 'anger' en la bota derecha.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "100% Denim Rígido Pesado (14 oz)",
+      "Lavado celeste descolorido estilo vintage",
+      "Bordado frontal 'anger' en bota derecha",
+      "Corte baggie amplio por debajo de la rodilla"
+    ]
+  },
+  {
+    "id": "drop-02",
+    "title": "ANGER Acid Wash Grey Baggie Denim",
+    "category": "Shorts Baggies",
+    "price": 129.00,
+    "badge": "EDICIÓN LIMITADA",
+    "image": "assets/real-shorts-02.jpg",
+    "secondaryImage": "assets/real-shorts-02.jpg",
+    "description": "Short baggie de jean en lavado ácido gris descolorido estilo nieve. Modelo confeccionado por Luis Angel Cachay con bordado 'anger' de alto relieve.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Denim en proceso de lavado ácido único",
+      "Silueta recta y holgada en muslos",
+      "Bordado frontal 'anger' en bota derecha",
+      "Remaches de metal y etiqueta de marca"
+    ]
+  },
+  {
+    "id": "drop-03",
+    "title": "ANGER Pitch Black Contrast Stitch Baggie",
+    "category": "Shorts Baggies",
+    "price": 119.00,
+    "badge": "ESSENTIAL BAGGIE",
+    "image": "assets/real-shorts-03.jpg",
+    "secondaryImage": "assets/real-shorts-03.jpg",
+    "description": "Short baggie negro azabache con costuras blancas en contraste. Confección en jean rígido de tono profundo y bordado 'anger' blanco en la bota.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Denim Negro Azabache Rígido (14 oz)",
+      "Costuras blancas expuestas en contraste",
+      "Bordado frontal 'anger' en bota derecha",
+      "Fit holgado por debajo de la rodilla"
+    ]
+  },
+  {
+    "id": "drop-04",
+    "title": "Pitch Black Boxy Fit Tee",
+    "category": "Polos Boxy Fit",
+    "price": 89.00,
+    "badge": "ESSENTIAL",
+    "image": "assets/boxy-black.jpg",
+    "secondaryImage": "assets/boxy-bone.jpg",
+    "description": "Polo de corte cuadrado (Boxy Fit) en jersey pesado 280 GSM. Caída recta drop shoulder con cuello cerrado de 3.5 cm.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Algodón Jersey 280 GSM Reactivo",
+      "Cuello Rib cerrado reforzado",
+      "Corte drop shoulder",
+      "Tinte negro mate de larga duración"
+    ]
+  },
+  {
+    "id": "drop-05",
+    "title": "Raw Bone Heavy Boxy Tee",
+    "category": "Polos Boxy Fit",
+    "price": 89.00,
+    "badge": "NUEVO",
+    "image": "assets/boxy-bone.jpg",
+    "secondaryImage": "assets/boxy-black.jpg",
+    "description": "Polo boxy fit en tono crema hueso crudo sin blanquear. Textura suave de tejido denso y estructura firme.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Algodón Natural Crudo 280 GSM",
+      "Tono Raw Bone sin químicos",
+      "Horma cuadrada holgada",
+      "Costuras ocultas en puños"
+    ]
+  },
+  {
+    "id": "drop-06",
+    "title": "Double Knee Baggy Denim - Washed Black",
+    "category": "Baggie Pants",
+    "price": 179.00,
+    "badge": "EXCLUSIVE DROP",
+    "image": "assets/baggy-jean.jpg",
+    "secondaryImage": "assets/baggy-jean.jpg",
+    "description": "Pantalón baggy de pierna ancha en denim deslavado negro con paneles dobles de refuerzo en rodillas (Double Knee).",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Denim Pesado 14.5 oz",
+      "Paneles de rodilla reforzados",
+      "Pierna de corte extra ancho",
+      "Acabado desgastado vintage"
+    ]
+  },
+  {
+    "id": "drop-07",
+    "title": "Vintage Charcoal Heavy Hoodie",
+    "category": "Hoodies",
+    "price": 199.00,
+    "badge": "450 GSM FLEECE",
+    "image": "assets/hoodie-charcoal.jpg",
+    "secondaryImage": "assets/hoodie-charcoal.jpg",
+    "description": "Polera capucha oversized en franela de algodón de 450 GSM. Capucha doble capa sin cordones y bolsillo canguro minimalista.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "450 GSM Heavy Fleece",
+      "Capucha estructurada doble tela",
+      "Sin cordones para diseño limpio",
+      "Puños y pretina rib de alta densidad"
+    ]
+  },
+  {
+    "id": "drop-08",
+    "title": "Heavy Khaki Utility Baggie Shorts",
+    "category": "Shorts Baggies",
+    "price": 129.00,
+    "badge": "EDICIÓN UTILITY",
+    "image": "assets/shorts-khaki.jpg",
+    "secondaryImage": "assets/shorts-khaki.jpg",
+    "description": "Cargo short oversized en tono caqui industrial con bolsillos laterales de gran capacidad.",
+    "sizes": ["S", "M", "L", "XL"],
+    "specs": [
+      "Drill pesado de alta durabilidad",
+      "Bolsillos cargo laterales con broche",
+      "Pretina alta con pasadores reforzados",
+      "Corte relajado street"
+    ]
+  }
+]
