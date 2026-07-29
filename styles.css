@@ -75,8 +75,7 @@ body {
 }
 
 .announcement-track span strong {
-    color: #ff3b53;
-    text-shadow: 0 0 10px rgba(255, 59, 83, 0.6);
+    color: var(--accent-red);
 }
 
 @keyframes marquee {
@@ -335,7 +334,7 @@ body {
     color: var(--accent-red);
 }
 
-/* Vans Hero Slider with Glassmorphic Frosted Red Blur Effects */
+/* Vans Hero Slider Harmonized Elegance */
 .hero-slider {
     position: relative;
     height: 82vh;
@@ -383,9 +382,9 @@ body {
     height: 100%;
     background: linear-gradient(
         90deg, 
-        rgba(0, 0, 0, 0.85) 0%, 
-        rgba(0, 0, 0, 0.65) 55%, 
-        rgba(0, 0, 0, 0.25) 100%
+        rgba(0, 0, 0, 0.82) 0%, 
+        rgba(0, 0, 0, 0.58) 55%, 
+        rgba(0, 0, 0, 0.2) 100%
     );
 }
 
@@ -394,26 +393,36 @@ body {
     z-index: 10;
     color: #ffffff;
     max-width: 650px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* Frosted Glassmorphic Tag with Soft Red Blur Glow */
+/* Minimalist Vans Style Dark Glass Tag */
 .slide-tag {
-    display: inline-block;
-    background: rgba(211, 17, 39, 0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(17, 17, 17, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 80, 100, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     color: #ffffff;
     font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 900;
-    padding: 6px 16px;
-    letter-spacing: 2px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 7px 16px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
     border-radius: 30px;
-    margin-bottom: 16px;
-    box-shadow: 0 0 20px rgba(211, 17, 39, 0.35), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.slide-tag::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-red);
 }
 
 .slide-title {
@@ -425,14 +434,17 @@ body {
     letter-spacing: -1px;
     margin-bottom: 16px;
     color: #ffffff;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
 }
 
-/* Glowing Blurred Red Gradient Typography */
+/* Crisp Clean Vans Accent Red with Pure Elegance */
 .slide-title span {
-    background: linear-gradient(135deg, #ff4d66 0%, #d31127 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 18px rgba(255, 45, 75, 0.65));
+    color: var(--accent-red);
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    filter: none;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 .slide-sub {
@@ -441,6 +453,7 @@ body {
     margin-bottom: 30px;
     line-height: 1.5;
     font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 .hero-buttons {
@@ -514,7 +527,6 @@ body {
     background: var(--accent-red);
     width: 28px;
     border-radius: 10px;
-    box-shadow: 0 0 12px rgba(211, 17, 39, 0.8);
 }
 
 /* Features Bar */
