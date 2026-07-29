@@ -1,9 +1,9 @@
-// ANGER® Streetwear Engine - Ultra Refined V6
+// ANGER® Streetwear Engine - Ultra Refined V7
 // Contact: Luis Angel Cachay (+51 910 255 019)
 
 let productsData = [];
-let cart = JSON.parse(localStorage.getItem('anger_cart_v5')) || [];
-let wishlist = JSON.parse(localStorage.getItem('anger_wishlist_v5')) || [];
+let cart = JSON.parse(localStorage.getItem('anger_cart_v7')) || [];
+let wishlist = JSON.parse(localStorage.getItem('anger_wishlist_v7')) || [];
 let activeCategory = 'all';
 let activeSize = 'all';
 let activeSort = 'default';
@@ -17,27 +17,17 @@ const cartBadge = document.getElementById('cartBadge');
 const wishlistBadge = document.getElementById('wishlistBadge');
 
 const cartDrawer = document.getElementById('cartDrawer');
-const drawerOverlay = document.getElementById('drawerOverlay');
-const cartTrigger = document.getElementById('cartTrigger');
-const closeCartBtn = document.getElementById('closeCartBtn');
 const cartBody = document.getElementById('cartBody');
 const cartTotalVal = document.getElementById('cartTotalVal');
 const checkoutWhatsappBtn = document.getElementById('checkoutWhatsappBtn');
 
 const wishlistDrawer = document.getElementById('wishlistDrawer');
-const wishlistOverlay = document.getElementById('wishlistOverlay');
-const wishlistTrigger = document.getElementById('wishlistTrigger');
-const closeWishlistBtn = document.getElementById('closeWishlistBtn');
 const wishlistBody = document.getElementById('wishlistBody');
 
 const quickModal = document.getElementById('quickModal');
-const modalBg = document.getElementById('modalBg');
-const closeModalCross = document.getElementById('closeModalCross');
 const modalContent = document.getElementById('modalContent');
 
-const searchTrigger = document.getElementById('searchTrigger');
 const searchModal = document.getElementById('searchModal');
-const closeSearchBtn = document.getElementById('closeSearchBtn');
 const searchInput = document.getElementById('searchInput');
 const searchResultsList = document.getElementById('searchResultsList');
 
@@ -49,7 +39,7 @@ const floatingCartTotal = document.getElementById('floatingCartTotal');
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
 
-// Initialize
+// Initialize on Load
 document.addEventListener('DOMContentLoaded', async () => {
     await fetchProducts();
     setupFilters();
@@ -57,6 +47,38 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupHeroSlider();
     updateUI();
 });
+
+// Global Drawer Controls
+window.openCart = function() {
+    if (cartDrawer) cartDrawer.classList.add('active');
+};
+
+window.closeCart = function() {
+    if (cartDrawer) cartDrawer.classList.remove('active');
+};
+
+window.openWishlist = function() {
+    if (wishlistDrawer) wishlistDrawer.classList.add('active');
+};
+
+window.closeWishlist = function() {
+    if (wishlistDrawer) wishlistDrawer.classList.remove('active');
+};
+
+window.openSearchModal = function() {
+    if (searchModal) {
+        searchModal.classList.add('active');
+        setTimeout(() => searchInput?.focus(), 100);
+    }
+};
+
+window.closeSearchModal = function() {
+    if (searchModal) searchModal.classList.remove('active');
+};
+
+window.closeQuickModal = function() {
+    if (quickModal) quickModal.classList.remove('active');
+};
 
 // Hero Slider
 function setupHeroSlider() {
@@ -145,7 +167,7 @@ function renderProducts() {
                     <span class="p-cat">${p.category}</span>
                     <h3 class="p-title">${p.title}</h3>
                     <div class="p-price-row">
-                        <span class="p-price">S/ ${p.price.toFixed(2)}</span>
+                        <span class="p-price">S/ ${Number(p.price).toFixed(2)}</span>
                         <button class="add-btn" onclick="addToCart('${p.id}')">
                             <i class="fa-solid fa-plus"></i> AGREGAR
                         </button>
@@ -199,7 +221,7 @@ window.openQuickModal = function(productId) {
         <div>
             <span class="p-cat">${product.category}</span>
             <h3 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; text-transform: uppercase; margin: 6px 0;">${product.title}</h3>
-            <div style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--accent-red); margin-bottom: 16px;">S/ ${product.price.toFixed(2)}</div>
+            <div style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; color: var(--accent-red); margin-bottom: 16px;">S/ ${Number(product.price).toFixed(2)}</div>
             <p style="color: #444; font-size: 0.95rem; margin-bottom: 20px;">${product.description}</p>
             
             <div style="margin-bottom: 20px;">
@@ -235,7 +257,7 @@ window.openQuickModal = function(productId) {
 
     window.addFromModal = function(id) {
         addToCart(id, selectedSize);
-        quickModal.classList.remove('active');
+        closeQuickModal();
     };
 };
 
@@ -245,7 +267,7 @@ window.toggleWishlist = function(id) {
     } else {
         wishlist.push(id);
     }
-    localStorage.setItem('anger_wishlist_v5', JSON.stringify(wishlist));
+    localStorage.setItem('anger_wishlist_v7', JSON.stringify(wishlist));
     updateUI();
     renderProducts();
 };
@@ -265,7 +287,7 @@ window.addToCart = function(id, customSize = null) {
             key,
             id: product.id,
             title: product.title,
-            price: product.price,
+            price: Number(product.price),
             image: product.image,
             size: size,
             qty: 1
@@ -298,24 +320,24 @@ function showToastNotification(product) {
     }, 3500);
 }
 
-function hideToast() {
+window.hideToast = function() {
     toastBanner?.classList.remove('active');
-}
+};
 
 function triggerPillPulse() {
     if (!floatingCartPill) return;
     floatingCartPill.classList.remove('pulse');
-    void floatingCartPill.offsetWidth; // trigger reflow
+    void floatingCartPill.offsetWidth; // force browser layout recalculation
     floatingCartPill.classList.add('pulse');
 }
 
 function saveCart() {
-    localStorage.setItem('anger_cart_v5', JSON.stringify(cart));
+    localStorage.setItem('anger_cart_v7', JSON.stringify(cart));
 }
 
 function updateUI() {
-    const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-    const grandTotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+    const totalQty = cart.reduce((sum, i) => sum + (Number(i.qty) || 0), 0);
+    const grandTotal = cart.reduce((sum, i) => sum + ((Number(i.price) || 0) * (Number(i.qty) || 0)), 0);
 
     if (cartBadge) cartBadge.innerText = totalQty;
     if (wishlistBadge) wishlistBadge.innerText = wishlist.length;
@@ -341,7 +363,7 @@ function updateUI() {
                             <div class="drawer-item-title">${p.title}</div>
                             <div style="font-size: 0.8rem; color: #666;">${p.category}</div>
                         </div>
-                        <div class="drawer-item-price">S/ ${p.price.toFixed(2)}</div>
+                        <div class="drawer-item-price">S/ ${Number(p.price).toFixed(2)}</div>
                         <button class="add-btn" style="padding: 4px 10px; font-size: 0.7rem;" onclick="addToCart('${p.id}'); toggleWishlist('${p.id}');">
                             <i class="fa-solid fa-bag-shopping"></i> MOVER AL CARRITO
                         </button>
@@ -368,7 +390,9 @@ function updateUI() {
     }
 
     cartBody.innerHTML = cart.map(item => {
-        const total = item.price * item.qty;
+        const itemPrice = Number(item.price) || 0;
+        const itemQty = Number(item.qty) || 0;
+        const subtotal = itemPrice * itemQty;
 
         return `
             <div class="drawer-item">
@@ -378,10 +402,10 @@ function updateUI() {
                         <div class="drawer-item-title">${item.title}</div>
                         <div style="font-size: 0.8rem; color: #666;">Talla: <strong>${item.size}</strong></div>
                     </div>
-                    <div class="drawer-item-price">S/ ${item.price.toFixed(2)}</div>
+                    <div class="drawer-item-price">S/ ${subtotal.toFixed(2)}</div>
                     <div style="display: flex; gap: 8px; align-items: center;">
                         <button class="add-btn" style="padding: 2px 8px;" onclick="changeQty('${item.key}', -1)">-</button>
-                        <span style="font-family: var(--font-heading); font-weight: 900;">${item.qty}</span>
+                        <span style="font-family: var(--font-heading); font-weight: 900;">${itemQty}</span>
                         <button class="add-btn" style="padding: 2px 8px;" onclick="changeQty('${item.key}', 1)">+</button>
                     </div>
                 </div>
@@ -413,43 +437,8 @@ window.removeCartItem = function(key) {
     updateUI();
 };
 
-function openCart() {
-    cartDrawer?.classList.add('active');
-}
-
-function closeCart() {
-    cartDrawer?.classList.remove('active');
-}
-
-function openWishlist() {
-    wishlistDrawer?.classList.add('active');
-}
-
-function closeWishlist() {
-    wishlistDrawer?.classList.remove('active');
-}
-
 function setupEventListeners() {
-    cartTrigger?.addEventListener('click', openCart);
-    floatingCartPill?.addEventListener('click', openCart);
-    closeCartBtn?.addEventListener('click', closeCart);
-    drawerOverlay?.addEventListener('click', closeCart);
-
-    wishlistTrigger?.addEventListener('click', openWishlist);
-    closeWishlistBtn?.addEventListener('click', closeWishlist);
-    wishlistOverlay?.addEventListener('click', closeWishlist);
-
-    closeModalCross?.addEventListener('click', () => quickModal?.classList.remove('active'));
-    modalBg?.addEventListener('click', () => quickModal?.classList.remove('active'));
-
     mobileToggle?.addEventListener('click', () => navLinks?.classList.toggle('active'));
-
-    searchTrigger?.addEventListener('click', () => {
-        searchModal?.classList.add('active');
-        setTimeout(() => searchInput?.focus(), 100);
-    });
-    
-    closeSearchBtn?.addEventListener('click', () => searchModal?.classList.remove('active'));
 
     // Live Instant Search Engine
     searchInput?.addEventListener('input', (e) => {
@@ -471,13 +460,13 @@ function setupEventListeners() {
         }
 
         searchResultsList.innerHTML = matches.map(m => `
-            <div class="search-result-item" onclick="openQuickModal('${m.id}'); searchModal.classList.remove('active');">
+            <div class="search-result-item" onclick="openQuickModal('${m.id}'); closeSearchModal();">
                 <img src="${m.image}" class="search-result-img">
                 <div class="search-result-info">
                     <div class="search-result-title">${m.title}</div>
                     <div style="font-size: 0.75rem; color: #666;">${m.category}</div>
                 </div>
-                <div class="search-result-price">S/ ${m.price.toFixed(2)}</div>
+                <div class="search-result-price">S/ ${Number(m.price).toFixed(2)}</div>
             </div>
         `).join('');
     });
@@ -492,7 +481,7 @@ function setupEventListeners() {
         let total = 0;
 
         cart.forEach((i, index) => {
-            const sub = i.price * i.qty;
+            const sub = (Number(i.price) || 0) * (Number(i.qty) || 0);
             total += sub;
             msg += `${index + 1}. *${i.title}*\n   • Talla: ${i.size}\n   • Cantidad: ${i.qty}\n   • Subtotal: S/ ${sub.toFixed(2)}\n\n`;
         });

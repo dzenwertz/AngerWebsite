@@ -42,14 +42,14 @@
             </nav>
 
             <div class="nav-actions">
-                <button class="icon-btn" id="searchTrigger" title="Buscar Productos">
+                <button class="icon-btn" id="searchTrigger" onclick="openSearchModal()" title="Buscar Productos">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-                <button class="icon-btn" id="wishlistTrigger" title="Mis Favoritos">
+                <button class="icon-btn" id="wishlistTrigger" onclick="openWishlist()" title="Mis Favoritos">
                     <i class="fa-solid fa-heart" style="color: var(--accent-red);"></i>
                     <span class="cart-badge" id="wishlistBadge">0</span>
                 </button>
-                <button class="icon-btn" id="cartTrigger" title="Carrito de Compras">
+                <button class="icon-btn" id="cartTrigger" onclick="openCart()" title="Carrito de Compras">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span class="cart-badge" id="cartBadge">0</span>
                 </button>
@@ -66,7 +66,7 @@
             <div class="search-input-group">
                 <i class="fa-solid fa-magnifying-glass search-field-icon"></i>
                 <input type="text" id="searchInput" placeholder="ESCRIBE PARA BUSCAR PRENDAS (EJ: SHORTS, BOXY, DENIM)..." autocomplete="off">
-                <button id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
+                <button id="closeSearchBtn" onclick="closeSearchModal()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="search-results-list" id="searchResultsList">
                 <!-- Search results injected live via JS -->
@@ -351,11 +351,11 @@
 
     <!-- Wishlist Drawer Modal -->
     <div class="cart-drawer" id="wishlistDrawer">
-        <div class="drawer-overlay" id="wishlistOverlay"></div>
+        <div class="drawer-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
         <div class="drawer-panel">
             <div class="drawer-header">
                 <h3><i class="fa-solid fa-heart" style="color: var(--accent-red);"></i> MIS FAVORITOS</h3>
-                <button class="drawer-close" id="closeWishlistBtn"><i class="fa-solid fa-xmark"></i></button>
+                <button class="drawer-close" id="closeWishlistBtn" onclick="closeWishlist()"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="drawer-body" id="wishlistBody">
@@ -370,11 +370,11 @@
 
     <!-- Cart Drawer Modal -->
     <div class="cart-drawer" id="cartDrawer">
-        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
         <div class="drawer-panel">
             <div class="drawer-header">
                 <h3><i class="fa-solid fa-bag-shopping"></i> CARRITO DE COMPRAS</h3>
-                <button class="drawer-close" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+                <button class="drawer-close" id="closeCartBtn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
             </div>
 
             <div class="drawer-body" id="cartBody">
@@ -399,7 +399,7 @@
     </div>
 
     <!-- Sticky Floating Cart Quick Button -->
-    <button class="floating-cart-pill" id="floatingCartPill">
+    <button class="floating-cart-pill" id="floatingCartPill" onclick="openCart()">
         <div class="cart-pill-icon">
             <i class="fa-solid fa-bag-shopping"></i>
             <span class="cart-pill-badge" id="floatingCartCount">0</span>
@@ -412,9 +412,9 @@
 
     <!-- Quick Modal -->
     <div class="modal" id="quickModal">
-        <div class="modal-bg" id="modalBg"></div>
+        <div class="modal-bg" id="modalBg" onclick="closeQuickModal()"></div>
         <div class="modal-card">
-            <button class="modal-close" id="closeModalCross"><i class="fa-solid fa-xmark"></i></button>
+            <button class="modal-close" id="closeModalCross" onclick="closeQuickModal()"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-grid" id="modalContent">
                 <!-- Injected via JS -->
             </div>
