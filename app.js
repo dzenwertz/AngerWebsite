@@ -1,4 +1,4 @@
-// ANGER® Streetwear Engine - Ultra Refined V5
+// ANGER® Streetwear Engine - Ultra Refined V6
 // Contact: Luis Angel Cachay (+51 910 255 019)
 
 let productsData = [];
@@ -9,6 +9,7 @@ let activeSize = 'all';
 let activeSort = 'default';
 let currentSlide = 0;
 let slideInterval = null;
+let toastTimeout = null;
 
 // DOM Elements
 const productsGrid = document.getElementById('productsGrid');
@@ -39,6 +40,11 @@ const searchModal = document.getElementById('searchModal');
 const closeSearchBtn = document.getElementById('closeSearchBtn');
 const searchInput = document.getElementById('searchInput');
 const searchResultsList = document.getElementById('searchResultsList');
+
+const toastBanner = document.getElementById('toastBanner');
+const floatingCartPill = document.getElementById('floatingCartPill');
+const floatingCartCount = document.getElementById('floatingCartCount');
+const floatingCartTotal = document.getElementById('floatingCartTotal');
 
 const mobileToggle = document.getElementById('mobileToggle');
 const navLinks = document.getElementById('navLinks');
@@ -268,8 +274,40 @@ window.addToCart = function(id, customSize = null) {
 
     saveCart();
     updateUI();
-    openCart();
+    showToastNotification(product);
+    triggerPillPulse();
 };
+
+function showToastNotification(product) {
+    if (!toastBanner) return;
+
+    toastBanner.innerHTML = `
+        <img src="${product.image}" class="toast-img">
+        <div class="toast-info">
+            <div><strong>✓ AGREGADO AL CARRITO</strong></div>
+            <div style="font-size: 0.75rem; color: #ccc;">${product.title}</div>
+        </div>
+        <button class="toast-view-btn" onclick="openCart(); hideToast();">VER CARRITO</button>
+    `;
+
+    toastBanner.classList.add('active');
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        hideToast();
+    }, 3500);
+}
+
+function hideToast() {
+    toastBanner?.classList.remove('active');
+}
+
+function triggerPillPulse() {
+    if (!floatingCartPill) return;
+    floatingCartPill.classList.remove('pulse');
+    void floatingCartPill.offsetWidth; // trigger reflow
+    floatingCartPill.classList.add('pulse');
+}
 
 function saveCart() {
     localStorage.setItem('anger_cart_v5', JSON.stringify(cart));
@@ -277,8 +315,13 @@ function saveCart() {
 
 function updateUI() {
     const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+    const grandTotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
     if (cartBadge) cartBadge.innerText = totalQty;
     if (wishlistBadge) wishlistBadge.innerText = wishlist.length;
+
+    if (floatingCartCount) floatingCartCount.innerText = totalQty;
+    if (floatingCartTotal) floatingCartTotal.innerText = `S/ ${grandTotal.toFixed(2)}`;
 
     // Update Wishlist Body
     if (wishlistBody) {
@@ -324,11 +367,8 @@ function updateUI() {
         return;
     }
 
-    let grandTotal = 0;
-
     cartBody.innerHTML = cart.map(item => {
         const total = item.price * item.qty;
-        grandTotal += total;
 
         return `
             <div class="drawer-item">
@@ -391,6 +431,7 @@ function closeWishlist() {
 
 function setupEventListeners() {
     cartTrigger?.addEventListener('click', openCart);
+    floatingCartPill?.addEventListener('click', openCart);
     closeCartBtn?.addEventListener('click', closeCart);
     drawerOverlay?.addEventListener('click', closeCart);
 

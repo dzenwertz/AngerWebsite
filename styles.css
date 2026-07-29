@@ -893,6 +893,150 @@ body {
     background: var(--accent-red);
 }
 
+/* Toast Banner Non-Intrusive Notification */
+.toast-banner {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    z-index: 350;
+    background: rgba(17, 17, 17, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.toast-banner.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-img {
+    width: 38px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.toast-info {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.toast-info strong {
+    color: #25d366;
+}
+
+.toast-view-btn {
+    background: #ffffff;
+    color: #111111;
+    border: none;
+    padding: 6px 14px;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 900;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.toast-view-btn:hover {
+    background: var(--accent-red);
+    color: #ffffff;
+}
+
+/* Sticky Floating Cart Pill Button */
+.floating-cart-pill {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    background: #111111;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: var(--transition-smooth);
+}
+
+.floating-cart-pill:hover {
+    transform: scale(1.05);
+    background: #000000;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+.floating-cart-pill.pulse {
+    animation: pillPulse 0.5s ease-in-out;
+}
+
+@keyframes pillPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); background: var(--accent-red); }
+    100% { transform: scale(1); }
+}
+
+.cart-pill-icon {
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.cart-pill-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--accent-red);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 900;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #111111;
+}
+
+.cart-pill-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cart-pill-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #888888;
+    letter-spacing: 1px;
+}
+
+.cart-pill-total {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
 /* Manifesto Section */
 .manifesto-section {
     background: var(--bg-surface);
@@ -1281,4 +1425,14 @@ body {
     .drawer-panel { max-width: 100vw; }
     
     .footer-grid { grid-template-columns: 1fr; }
+
+    .floating-cart-pill {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 16px;
+    }
+    .toast-banner {
+        width: 90%;
+        bottom: 80px;
+    }
 }
