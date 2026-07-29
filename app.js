@@ -1,9 +1,9 @@
-// ANGER® Streetwear Engine - Ultra Refined V7
+// ANGER® Streetwear Engine - Ultra Refined V8
 // Contact: Luis Angel Cachay (+51 910 255 019)
 
 let productsData = [];
-let cart = JSON.parse(localStorage.getItem('anger_cart_v7')) || [];
-let wishlist = JSON.parse(localStorage.getItem('anger_wishlist_v7')) || [];
+let cart = JSON.parse(localStorage.getItem('anger_cart_v8')) || [];
+let wishlist = JSON.parse(localStorage.getItem('anger_wishlist_v8')) || [];
 let activeCategory = 'all';
 let activeSize = 'all';
 let activeSort = 'default';
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateUI();
 });
 
-// Global Drawer Controls
+// Global Drawer & Modal Controls
 window.openCart = function() {
     if (cartDrawer) cartDrawer.classList.add('active');
 };
@@ -168,7 +168,7 @@ function renderProducts() {
                     <h3 class="p-title">${p.title}</h3>
                     <div class="p-price-row">
                         <span class="p-price">S/ ${Number(p.price).toFixed(2)}</span>
-                        <button class="add-btn" onclick="addToCart('${p.id}')">
+                        <button class="add-btn" onclick="promptSizeAndAdd('${p.id}')">
                             <i class="fa-solid fa-plus"></i> AGREGAR
                         </button>
                     </div>
@@ -206,6 +206,56 @@ window.filterByCategory = function(catName) {
     });
     document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
     renderProducts();
+};
+
+// Prompt Size Modal on Clicking AGREGAR
+window.promptSizeAndAdd = function(productId) {
+    const product = productsData.find(p => p.id === productId);
+    if (!product) return;
+
+    let selectedSize = product.sizes[0];
+
+    modalContent.innerHTML = `
+        <div style="aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; background: #f8f8f8;">
+            <img src="${product.image}" alt="${product.title}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+            <span class="p-cat">${product.category}</span>
+            <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin: 6px 0;">${product.title}</h3>
+            <div style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; color: var(--accent-red); margin-bottom: 16px;">S/ ${Number(product.price).toFixed(2)}</div>
+            
+            <div style="margin-bottom: 24px;">
+                <label style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 900; text-transform: uppercase; display: block; margin-bottom: 10px; color: #111;">
+                    <i class="fa-solid fa-ruler-combined" style="color: var(--accent-red); margin-right: 6px;"></i> SELECCIONA TU TALLA:
+                </label>
+                <div style="display: flex; gap: 10px;" id="sizeBtnGroup">
+                    ${product.sizes.map(s => `
+                        <button class="chip ${s === selectedSize ? 'active' : ''}" style="padding: 10px 20px; font-size: 0.9rem;" onclick="selectPromptSize('${s}')">${s}</button>
+                    `).join('')}
+                </div>
+            </div>
+
+            <button class="btn btn-white" style="background: #111; color: #fff; width: 100%; border-radius: 30px; padding: 16px;" id="confirmAddBtn" onclick="confirmAddCart('${product.id}')">
+                <i class="fa-solid fa-bag-shopping"></i> AGREGAR (TALLA <span id="selectedSizeLabel">${selectedSize}</span>)
+            </button>
+        </div>
+    `;
+
+    quickModal.classList.add('active');
+
+    window.selectPromptSize = function(size) {
+        selectedSize = size;
+        document.querySelectorAll('#sizeBtnGroup .chip').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText === size);
+        });
+        const label = document.getElementById('selectedSizeLabel');
+        if (label) label.innerText = size;
+    };
+
+    window.confirmAddCart = function(id) {
+        addToCart(id, selectedSize);
+        closeQuickModal();
+    };
 };
 
 window.openQuickModal = function(productId) {
@@ -267,7 +317,7 @@ window.toggleWishlist = function(id) {
     } else {
         wishlist.push(id);
     }
-    localStorage.setItem('anger_wishlist_v7', JSON.stringify(wishlist));
+    localStorage.setItem('anger_wishlist_v8', JSON.stringify(wishlist));
     updateUI();
     renderProducts();
 };
@@ -296,18 +346,18 @@ window.addToCart = function(id, customSize = null) {
 
     saveCart();
     updateUI();
-    showToastNotification(product);
+    showToastNotification(product, size);
     triggerPillPulse();
 };
 
-function showToastNotification(product) {
+function showToastNotification(product, size) {
     if (!toastBanner) return;
 
     toastBanner.innerHTML = `
         <img src="${product.image}" class="toast-img">
         <div class="toast-info">
             <div><strong>✓ AGREGADO AL CARRITO</strong></div>
-            <div style="font-size: 0.75rem; color: #ccc;">${product.title}</div>
+            <div style="font-size: 0.75rem; color: #ccc;">${product.title} (Talla: ${size})</div>
         </div>
         <button class="toast-view-btn" onclick="openCart(); hideToast();">VER CARRITO</button>
     `;
@@ -332,7 +382,7 @@ function triggerPillPulse() {
 }
 
 function saveCart() {
-    localStorage.setItem('anger_cart_v7', JSON.stringify(cart));
+    localStorage.setItem('anger_cart_v8', JSON.stringify(cart));
 }
 
 function updateUI() {
@@ -364,7 +414,7 @@ function updateUI() {
                             <div style="font-size: 0.8rem; color: #666;">${p.category}</div>
                         </div>
                         <div class="drawer-item-price">S/ ${Number(p.price).toFixed(2)}</div>
-                        <button class="add-btn" style="padding: 4px 10px; font-size: 0.7rem;" onclick="addToCart('${p.id}'); toggleWishlist('${p.id}');">
+                        <button class="add-btn" style="padding: 4px 10px; font-size: 0.7rem;" onclick="promptSizeAndAdd('${p.id}'); toggleWishlist('${p.id}');">
                             <i class="fa-solid fa-bag-shopping"></i> MOVER AL CARRITO
                         </button>
                     </div>
